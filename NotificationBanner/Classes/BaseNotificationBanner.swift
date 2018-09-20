@@ -131,7 +131,7 @@ public class BaseNotificationBanner: UIView {
             return contentView.backgroundColor
         } set {
             contentView.backgroundColor = newValue
-            spacerView.backgroundColor = newValue
+            spacerView.backgroundColor = UIColor.clear
         }
     }
     
@@ -178,24 +178,21 @@ public class BaseNotificationBanner: UIView {
                 make.bottom.equalToSuperview().offset(10)
             }
             make.left.equalToSuperview()
-            make.right.equalToSuperview()
+            make.right.equalToSuperview().offset(20)
             updateSpacerViewHeight(make: make)
         }
-
-             contentView.layer.cornerRadius = 6
+        contentView.layer.cornerRadius = 6
         contentView.snp.remakeConstraints { (make) in
             if bannerPosition == .top {
                 make.top.equalTo(spacerView.snp.bottom).offset(20)
-                make.bottom.equalToSuperview().offset(17)
+                make.bottom.equalToSuperview()
             } else {
                 make.top.equalToSuperview().offset(20)
-                make.bottom.equalTo(spacerView.snp.top).offset(17)
+                make.bottom.equalTo(spacerView.snp.top)
             }
-            
             make.left.equalToSuperview().offset(20)
-            make.right.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
         }
-
     }
     
     /**
