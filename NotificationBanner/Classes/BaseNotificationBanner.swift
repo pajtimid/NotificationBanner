@@ -184,15 +184,15 @@ public class BaseNotificationBanner: UIView {
 
         contentView.snp.remakeConstraints { (make) in
             if bannerPosition == .top {
-                make.top.equalTo(spacerView.snp.bottom)
-                make.bottom.equalToSuperview()
+                make.top.equalTo(spacerView.snp.bottom).offset(-20)
+                make.bottom.equalToSuperview().offset(-20)
             } else {
-                make.top.equalToSuperview()
-                make.bottom.equalTo(spacerView.snp.top)
+                make.top.equalToSuperview().offset(-20)
+                make.bottom.equalTo(spacerView.snp.top).offset(-20)
             }
             
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
+            make.left.equalToSuperview().offset(-20)
+            make.right.equalToSuperview().offset(-20)
         }
 
     }
