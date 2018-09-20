@@ -56,7 +56,10 @@ public class NotificationBanner: BaseNotificationBanner {
                 leftView: UIView? = nil,
                 rightView: UIView? = nil,
                 style: BannerStyle = .info,
-                colors: BannerColorsProtocol? = nil) {
+                colors: BannerColorsProtocol? = nil,
+                fontType: String? = nil,
+                fontSize: CGFloat? = nil,
+                fontColor: UIColor? = nil) {
         
         super.init(style: style, colors: colors)
         
@@ -85,10 +88,11 @@ public class NotificationBanner: BaseNotificationBanner {
         let labelsView = UIView()
         contentView.addSubview(labelsView)
         
+        if let fontType = fontType, let fontSize = fontSize {
         titleLabel = MarqueeLabel()
         titleLabel!.type = .left
-        titleLabel!.font = UIFont.systemFont(ofSize: 17.5, weight: UIFont.Weight.bold)
-        titleLabel!.textColor = .white
+        titleLabel!.font = UIFont(name: fontType, size: fontSize)
+        titleLabel!.textColor = fontColor
         titleLabel!.text = title
         labelsView.addSubview(titleLabel!)
         
@@ -102,6 +106,7 @@ public class NotificationBanner: BaseNotificationBanner {
                 titleLabel!.numberOfLines = 2
             }
         }
+      }
         
         if let subtitle = subtitle {
             subtitleLabel = MarqueeLabel()
